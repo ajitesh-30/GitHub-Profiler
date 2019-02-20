@@ -12,7 +12,7 @@ class App extends Component {
 			infoclean : '',
 			formData: {
 				username : '',
-			}
+			},
 			repitems : null,
 			staritems:null,
 		}
@@ -27,6 +27,20 @@ class App extends Component {
 			gitrun : response.data.login,
 			infoclean : response.data,
 		})).catch((err) => { console.log(err); });
+
+		axios.get('https://api.github.com/users/'+this.state.formData.username+'/repos')
+    	.then(response => this.setState({
+      	repitems : response.data
+      	.filter(({fork}) => fork === false)
+      	.sort((b, a) => (a.watchers_count + a.forks_count) - (b.watchers_count + b.forks_count)).slice(0,10)
+     	})).catch((err) => { console.log(err); });
+
+		axios.get('https://api.github.com/users/'+this.state.formData.username+'/starred')
+    	.then(response => this.setState({
+      	staritems : response.data
+      	.filter(({fork}) => fork === false)
+      	.sort((b, a) => (a.watchers_count + a.forks_count) - (b.watchers_count + b.forks_count)).slice(0,10)
+    	})).catch((err) => { console.log(err); });
 	};
 
 	handleFormChange(event) {
@@ -50,8 +64,14 @@ class App extends Component {
           			handleFormChange={this.handleFormChange}
         		/>
         		  <hr></hr>
-       			 Profile Details:
-        			<ProfileDetails infoclean={this.state.infoclean}/>
+        		  Profile Details:
+        <ProfileDetails infoclean={this.state.infoclean}/>
+        <hr></hr>
+        Own Repositories:
+        <SortedList repitems={this.state.repitems}/>
+        <hr></hr>
+        Starred Repositories:
+        <SortedList repitems={this.state.staritems}/>
       		</div>
     	);
   	}
