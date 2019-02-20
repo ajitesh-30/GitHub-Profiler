@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Button from './components/Button.js';
 import Form from './components/Form.js';
+import SortedList from './components/SortedList.js';
 import ProfileDetails from './components/ProfileDetails.js';
 import axios from 'axios';
 class App extends Component {
@@ -12,6 +13,8 @@ class App extends Component {
 			formData: {
 				username : '',
 			}
+			repitems : null,
+			staritems:null,
 		}
 		this.handleUserFormSubmit = this.handleUserFormSubmit.bind(this);
 		this.handleFormChange= this.handleFormChange.bind(this);
@@ -31,6 +34,7 @@ class App extends Component {
 		obj[event.target.name] = event.target.value;
 		this.setState(obj);
 	};
+
   	render() {
     	return (
      	 	<div className="App">

@@ -6,11 +6,11 @@ const Form = (props) => {
 			<label>
 				<p>Search:</p>
 				<input name="username" 
-				type="text"
-				placeholder="Github Username"
-				required
-				value={props.formData.username}
-				onChange={props.handleFormChange}
+					type="text"
+					placeholder="Github Username"
+					required
+					value={props.formData.username}
+					onChange={props.handleFormChange}
 			/>
 			</label>
 			<div>
