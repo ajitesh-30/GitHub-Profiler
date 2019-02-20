@@ -1,28 +1,29 @@
 import React, { Component } from 'react';
 import Button from './components/Button.js';
 import Form from './components/Form.js';
+import ProfileDetails from './components/ProfileDetails.js';
 import axios from 'axios';
 class App extends Component {
 	constructor() {
 		super();
 		this.state = {
 			gitrun : 'No username',
-			info : '',
+			infoclean : '',
 			formData: {
 				username : '',
 			}
 		}
 		this.handleUserFormSubmit = this.handleUserFormSubmit.bind(this);
-		this.handleClick = this.handleClick.bind(this);
+		this.handleFormChange= this.handleFormChange.bind(this);
 	}
 
 	handleUserFormSubmit(event) {
 		event.preventDefault();
-		axios.get('https://api.github.com/users/ajitesh-30')
+		axios.get('https://api.github.com/users/'+this.state.formData.username)
 		.then(response => this.setState({
-			username: response.data.login,
-			info : JSON.stringify(response.data,undefined,2)
-		})).catch((err) => { console.log(err) });
+			gitrun : response.data.login,
+			infoclean : response.data,
+		})).catch((err) => { console.log(err); });
 	};
 
 	handleFormChange(event) {
@@ -39,11 +40,14 @@ class App extends Component {
         		<p class="App-intro">
         			Content Coming Up
         		</p>
-        			<Button handleClick={this.handleClick}/>
-        			<p>Username : <b/></p>
-        			<p>{this.state.username}</p>
-        			<b>Information : </b>
-        			<pre>{this.state.info}</pre>
+        		<Form
+          			formData={this.state.formData}
+          			handleUserFormSubmit={this.handleUserFormSubmit}
+          			handleFormChange={this.handleFormChange}
+        		/>
+        		  <hr></hr>
+       			 Profile Details:
+        			<ProfileDetails infoclean={this.state.infoclean}/>
       		</div>
     	);
   	}
