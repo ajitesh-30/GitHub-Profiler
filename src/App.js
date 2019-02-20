@@ -1,23 +1,35 @@
 import React, { Component } from 'react';
 import Button from './components/Button.js';
+import Form from './components/Form.js';
 import axios from 'axios';
 class App extends Component {
 	constructor() {
 		super();
 		this.state = {
-			username : 'No username',
-			info : ''
+			gitrun : 'No username',
+			info : '',
+			formData: {
+				username : '',
+			}
 		}
-		this.handleClick = this.handleClick.bind(this)
+		this.handleUserFormSubmit = this.handleUserFormSubmit.bind(this);
+		this.handleClick = this.handleClick.bind(this);
 	}
 
-	handleClick(e){
+	handleUserFormSubmit(event) {
+		event.preventDefault();
 		axios.get('https://api.github.com/users/ajitesh-30')
 		.then(response => this.setState({
 			username: response.data.login,
 			info : JSON.stringify(response.data,undefined,2)
-		}));
-	}
+		})).catch((err) => { console.log(err) });
+	};
+
+	handleFormChange(event) {
+		const obj = this.state.formData;
+		obj[event.target.name] = event.target.value;
+		this.setState(obj);
+	};
   	render() {
     	return (
      	 	<div className="App">
