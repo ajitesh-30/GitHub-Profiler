@@ -1,28 +1,40 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import Button from './components/Button.js';
+import axios from 'axios';
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+	constructor() {
+		super();
+		this.state = {
+			username : 'No username',
+			info : ''
+		}
+		this.handleClick = this.handleClick.bind(this)
+	}
+
+	handleClick(e){
+		axios.get('https://api.github.com/users/ajitesh-30')
+		.then(response => this.setState({
+			username: response.data.login,
+			info : JSON.stringify(response.data,undefined,2)
+		}));
+	}
+  	render() {
+    	return (
+     	 	<div className="App">
+        		<header className="App-header">
+          			<h1 class="App-title">GitHub Analytics</h1>
+        		</header>
+        		<p class="App-intro">
+        			Content Coming Up
+        		</p>
+        			<Button handleClick={this.handleClick}/>
+        			<p>Username : <b/></p>
+        			<p>{this.state.username}</p>
+        			<b>Information : </b>
+        			<pre>{this.state.info}</pre>
+      		</div>
+    	);
+  	}
 }
 
 export default App;
