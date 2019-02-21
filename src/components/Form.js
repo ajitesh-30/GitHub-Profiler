@@ -1,11 +1,10 @@
 import React from 'react';
-
+import './index.css';
 const Form = (props) => {
 	return (
 		<form onSubmit={(event) => props.handleUserFormSubmit(event)}>
 			<label>
-				<p>Search:</p>
-				<input name="username" 
+				<input class="form" name="username" 
 					type="text"
 					placeholder="Github Username"
 					required
@@ -14,7 +13,7 @@ const Form = (props) => {
 			/>
 			</label>
 			<div>
-			<input 
+			<input class="btn"
 				type="submit"
 				value="submit"
 			/>

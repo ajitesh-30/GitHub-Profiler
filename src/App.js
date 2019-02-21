@@ -4,6 +4,7 @@ import Form from './components/Form.js';
 import SortedList from './components/SortedList.js';
 import ProfileDetails from './components/ProfileDetails.js';
 import axios from 'axios';
+import './index.css';
 class App extends Component {
 	constructor() {
 		super();
@@ -53,25 +54,20 @@ class App extends Component {
     	return (
      	 	<div className="App">
         		<header className="App-header">
-          			<h1 class="App-title">GitHub Analytics</h1>
+          			<h1 class="heading"><center>GitHub Analytics</center></h1>
         		</header>
-        		<p class="App-intro">
-        			Content Coming Up
-        		</p>
         		<Form
           			formData={this.state.formData}
           			handleUserFormSubmit={this.handleUserFormSubmit}
           			handleFormChange={this.handleFormChange}
         		/>
-        		  <hr></hr>
-        		  Profile Details:
-        <ProfileDetails infoclean={this.state.infoclean}/>
-        <hr></hr>
-        Own Repositories:
-        <SortedList repitems={this.state.repitems}/>
-        <hr></hr>
-        Starred Repositories:
-        <SortedList repitems={this.state.staritems}/>
+        		<div class="container">
+       				
+        			<ProfileDetails infoclean={this.state.infoclean}/>
+       				<SortedList repitems={this.state.repitems}/>
+        			<br/>
+        			<SortedList repitems={this.state.staritems}/>
+        		</div>
       		</div>
     	);
   	}

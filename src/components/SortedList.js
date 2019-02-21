@@ -1,16 +1,18 @@
 import React from 'react';
 import Moment from 'react-moment';
-
+import './index.css';
 const SortedList = (props) => {
 	if (props.repitems) {
 		return (
 			<ul>
+				<span class="heading-info"><b>Own Repositories</b></span>
+				<br/>
 				{props.repitems.map((repitem) => 
 					<li key={repitem.id}>
-						<div>
+						<div class="repositories">
 							<div>
 								<a href={repitem.html_url} target="_blank">
-								{repitem.name}</a> || Started <Moment from={new Date()}>
+								{repitem.name}</a><br/> Started <Moment from={new Date()}>
 								{repitem.created_at}</Moment>
 							</div>
 							<div>

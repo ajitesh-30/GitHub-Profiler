@@ -1,0 +1,54 @@
+.App {
+	background-color:  #f5f6fa;
+}	
+.profie-details {
+	font-family: OCR A Std, monospace;
+	
+}
+.container {
+	margin-left: 10%;
+	border : 1px solid;
+}
+.image {
+	margin-top: 30px;
+	border-radius:  50%;
+	width : 250px;
+	height: 250px;
+	margin-left: 50%; 
+}
+.heading {
+	font-family: OCR A Std, monospace;
+
+}
+.form{
+		margin-left: 40%;	
+		width: 360px;
+		background: #fff;
+		color: #a3a3a3;
+		font: inherit;
+		box-shadow: 0 6px 10px 0 rgba(0, 0, 0 , .1);
+		border: 0;
+		outline: 0;
+		padding: 22px 18px;
+}
+
+.btn {
+	margin-left: 48%;
+	display: inline-block;
+	color: #7f8ff4;
+	width: 100px;
+	height: 40px;
+	margin-top: 10px;
+	font: inherit;
+	border: 0;
+	outline: 0;
+	padding: 0;
+	transition: all 200ms ease-in;
+	cursor: pointer;
+}
+
+.repositories{
+	padding-top: 15px;
+	padding-bottom: 15px;
+	border : 1px solid;
+}
