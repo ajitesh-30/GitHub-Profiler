@@ -1,4 +1,16 @@
+
+Analyze User's github profile using the username . #React Js.
+
+Future Work : 
+
+1) Proper UI formating .
+
+2) Compare two users .
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
 
 ## Available Scripts
 
